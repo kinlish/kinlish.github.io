@@ -49,7 +49,16 @@ $ sudo update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 500
 $ #設定javac
 $ sudo update-alternatives --install /usr/bin/javac javac $JAVA_HOME/bin/javac 500
 ```
-注意最後的優先權數字，那是代表著當設定的程式路徑不存在時，選擇由優先權高的替補。
+最後的優先權數字，那是代表著當設定的程式路徑不存在時，選擇由優先權高的替補。
+
+注意到 `java` 和 `javac` 在進行安裝 alternatives 版本時都需要個別設定，而通常有關 jdk 的工具應該也都需要一同更換，為此我寫了一個簡易的[shell script](https://github.com/kinlish/ToolsConfig/blob/d6d5c120643ef8ca2e00aa1d5cb6ce13faa67ed4/jdk/jdk-alternatives.sh)，用此工具進行完整的替換比較方便又省事，下載後用法如下：
+```console
+$ #使用此工具需要先設定欲使用的jdk JAVA_HOME環境變數
+$ #install為安裝及指定版本
+$ sudo ./jdk-alternatives.sh install
+$ #remote為移除版本，若系統安裝多於一個版本則會依alternative清單優先權進行替換
+$ sudo ./jdk-alternatives.sh remove
+```
 
 ## 由 alternative 切換版本
 現在我們在系統藉由 apt 安裝 default-jdk 及透過封存檔案安裝 oracle jdk，可以查詢已經安裝的版本：
