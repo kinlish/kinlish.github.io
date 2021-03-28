@@ -51,7 +51,8 @@ $ sudo update-alternatives --install /usr/bin/javac javac $JAVA_HOME/bin/javac 5
 ```
 最後的優先權數字，那是代表著當設定的程式路徑不存在時，選擇由優先權高的替補。
 
-注意到 `java` 和 `javac` 在進行安裝 alternatives 版本時都需要個別設定，而通常有關 jdk 的工具應該也都需要一同更換，為此我寫了一個簡易的[shell script](https://github.com/kinlish/ToolsConfig/blob/d6d5c120643ef8ca2e00aa1d5cb6ce13faa67ed4/jdk/jdk-alternatives.sh)，用此工具進行完整的替換比較方便又省事，下載後用法如下：
+### 使用 shell 工具執行安裝或指定版本
+注意到 `java` 和 `javac` 在進行安裝 alternatives 版本時都需要個別設定，而通常有關 jdk 的工具應該也都需要一同更換，為此我寫了一個簡易的[shell script](/assets/resource/jdk-alternatives.sh)，用此工具進行完整的替換比較方便又省事，下載後用法如下：
 ```console
 $ #使用此工具需要先設定欲使用的jdk JAVA_HOME環境變數
 $ #install為安裝及指定版本
